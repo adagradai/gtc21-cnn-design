@@ -1,0 +1,9 @@
+{
+	"tracker_config_path": "../model_configs/tracker.yml",
+	"tracker_lib_path": "/opt/nvidia/deepstream/deepstream/lib/libnvds_nvdcf.so",
+	"model_config_path": "../model_configs/face_detector.cfg",	
+	"muxer_height": 1080,	
+	"muxer_width": 1920,	
+	"camera_uri": "rtsp://admin:Asdfghjkl1@192.168.0.201:554/cam/realmonitor?channel=1",
+	"stream_output": true
+}
