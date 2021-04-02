@@ -22,8 +22,6 @@
 
 #include "nvdsinfer_custom_impl.h"
 #include "nvdsinfer_context.h"
-//#include "inference/yoloPlugins.h"
-//#include "inference/yolo.h"
 #include "yoloPlugins.h"
 #include "yolo.h"
 #include <algorithm>

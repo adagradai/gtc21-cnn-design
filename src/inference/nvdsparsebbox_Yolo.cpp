@@ -2,10 +2,11 @@
 #include <cassert>
 #include <cmath>
 #include <iostream>
-#include "nvdsinfer_custom_impl.h"
-//#include "inference/trt_utils.h"
-#include "trt_utils.h"
+
 #include <cuda.h>
+#include <vector>
+#include "nvdsinfer_custom_impl.h"
+#include "trt_utils.h"
 
 extern "C" bool NvDsInferParseCustomYoloV3(
         std::vector<NvDsInferLayerInfo> const &outputLayersInfo,
@@ -339,6 +340,7 @@ extern "C" bool NvDsInferParseCustomYoloTLT(
 }
 
 
+
 static NvDsInferParseObjectInfo convertBBoxYoloV4(const float& bx1, const float& by1, const float& bx2,
                                      const float& by2, const uint& netW, const uint& netH)
 {
@@ -415,7 +417,6 @@ decodeYoloV4Tensor(
     }
     return binfo;
 }
-
 
 extern "C" bool NvDsInferParseCustomYoloV4_person(
     std::vector<NvDsInferLayerInfo> const& outputLayersInfo,

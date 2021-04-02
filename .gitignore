@@ -1,6 +1,6 @@
 .vscode
 build
-model_configs/yolov4_person.engine
-model_configs/person.names
-model_configs/person_detect.model_configs
+model_configs/*.cfg
+model_config/*.engine
 libs/*.so
+videos/output/*
