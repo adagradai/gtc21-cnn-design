@@ -35,7 +35,7 @@ include_directories(${CMAKE_SOURCE_DIR}/external/json/include)
 include_directories(${CMAKE_SOURCE_DIR}/external/spdlog/include)
 include_directories("${CMAKE_SOURCE_DIR}")
 
-
+# link directories for app
 link_directories(libs)
 link_directories(${GLIB_LIBRARY_DIRS})
 link_directories(${GSTREAMER_LIBRARY_DIRS})
@@ -56,8 +56,9 @@ add_executable(
 )
 
 target_link_libraries(yoloinfer nvinfer_plugin nvinfer nvparsers)
-target_link_libraries(yoloinfer cudart cublas)
+target_link_libraries(yoloinfer cudart cublas stdc++fs)
 
 target_link_libraries(DSFaceBlurSample ${GSTREAMER_LIBRARY} ${GLIB2_LIBRARIES} ${GOBJECT_LIBRARIES} ${CUDA_LIBRARIES})
 target_link_libraries(DSFaceBlurSample nvdsgst_meta nvds_meta nvbufsurface nvbufsurftransform pthread stdc++fs)
-target_link_libraries(DSFaceBlurSample ${OpenCV_LIBS})
+#target_link_libraries(DSFaceBlurSample ${OpenCV_LIBS})
+target_link_libraries(DSFaceBlurSample opencv_cudafilters)

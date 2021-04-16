@@ -6,6 +6,7 @@
 #include <experimental/filesystem>
 #include <fstream>
 #include <spdlog/spdlog.h>
+#include <iostream>
 
 using jsonlib = nlohmann::json;
 
@@ -26,10 +27,10 @@ class JsonConfig{
 	std::string model_config_path;
 	uint muxer_height;
 	uint muxer_width;	
-	std::string camera_uri;
+	std::string source_uri;
 	std::string tracker_lib_path;
 	std::string tracker_config_path;
-	bool stream_output;
+	bool enable_display;	
 };
 
 

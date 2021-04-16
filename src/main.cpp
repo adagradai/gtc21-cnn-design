@@ -2,8 +2,8 @@
 #include "face_blur_pipeline.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/basic_file_sink.h"
-#define CONFIG_PATH "../config/init_config.json"
 
+#define CONFIG_PATH "../config/init_config.json"
 #define LOGNAME_FORMAT "logs/ds_face_blur_sample_%Y%m%d_%H%M%S.log"
 #define LOGNAME_SIZE 40
 

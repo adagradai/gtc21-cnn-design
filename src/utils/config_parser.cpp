@@ -6,9 +6,9 @@ bool ConfigParser::isValidConfig(){
 	SPDLOG_INFO("model config path {}", parsedConfig.model_config_path);
 	SPDLOG_INFO("muxer width {}", parsedConfig.muxer_width);
 	SPDLOG_INFO("muxer height {}", parsedConfig.muxer_height);
-	SPDLOG_INFO("camera uri {}", parsedConfig.camera_uri);	
-	// SPDLOG_INFO("tracker_config_path {}", parsedConfig.tracker_config_path);
-	// SPDLOG_INFO("tracker lib path {}", parsedConfig.tracker_lib_path);	
+	SPDLOG_INFO("source uri {}", parsedConfig.source_uri);	
+	SPDLOG_INFO("tracker_config_path {}", parsedConfig.tracker_config_path);
+	SPDLOG_INFO("tracker lib path {}", parsedConfig.tracker_lib_path);	
 
 	if(parsedConfig.model_config_path.empty() || !std::experimental::filesystem::exists(parsedConfig.model_config_path))
 		SPDLOG_INFO("model config path is empty in json or doesnt exists");				
@@ -16,10 +16,10 @@ bool ConfigParser::isValidConfig(){
 		SPDLOG_INFO("invalid muxer width specified in json config");
 	else if(parsedConfig.muxer_height <=0)
 		SPDLOG_INFO("invalid muxer height specified in json config");	
-	// else if(parsedConfig.tracker_config_path.empty() || !std::experimental::filesystem::exists(parsedConfig.tracker_config_path))
-	// 	SPDLOG_INFO("tracker config path is empty in json or doesnt exists");			
-	// else if(parsedConfig.tracker_lib_path.empty() || !std::experimental::filesystem::exists(parsedConfig.tracker_lib_path))
-	// 	SPDLOG_INFO("tracker lib path is empty in json or doesnt exists");				
+	else if(parsedConfig.tracker_config_path.empty() || !std::experimental::filesystem::exists(parsedConfig.tracker_config_path))
+		SPDLOG_INFO("tracker config path is empty in json or doesnt exists");			
+	else if(parsedConfig.tracker_lib_path.empty() || !std::experimental::filesystem::exists(parsedConfig.tracker_lib_path))
+		SPDLOG_INFO("tracker lib path is empty in json or doesnt exists");					
 	else{			
 			SPDLOG_INFO("config parsing successful");			
 			config_parsed = true;
@@ -46,18 +46,18 @@ void ConfigParser::parseConfig(){
 	if(jsonConfig["muxer_height"] != nullptr)
 		parsedConfig.muxer_height = jsonConfig["muxer_height"].get<int>();
 
-	if(jsonConfig["camera_uri"] != nullptr)
-		parsedConfig.camera_uri = jsonConfig["camera_uri"].get<std::string>();
+	if(jsonConfig["source_uri"] != nullptr)
+		parsedConfig.source_uri = jsonConfig["source_uri"].get<std::string>();
 		
 	if(jsonConfig["tracker_config_path"] != nullptr)
 		parsedConfig.tracker_config_path = jsonConfig["tracker_config_path"].get<std::string>();
 
 	if(jsonConfig["tracker_lib_path"] != nullptr)
 		parsedConfig.tracker_lib_path = jsonConfig["tracker_lib_path"].get<std::string>();	
-
-	if(jsonConfig["stream_output"] != nullptr)
-		parsedConfig.stream_output = jsonConfig["stream_output"].get<bool>();
+	
+	if(jsonConfig["enable_display"] != nullptr)
+		parsedConfig.enable_display = jsonConfig["enable_display"].get<bool>();	
 	else
 		//disable streaming by default
-		parsedConfig.stream_output= false;
+		parsedConfig.enable_display= false;
 }
